@@ -141,3 +141,14 @@ export const deleteBook = catchAsyncErrors(async (req, res, next) => {
     message: "Book deleted",
   });
 });
+
+// GET SINGLE BOOK — add this to your existing bookController.js
+export const getSingleBook = catchAsyncErrors(async (req, res, next) => {
+  const book = await Book.findById(req.params.id);
+  if (!book) return next(new ErrorHandler("Book not found", 404));
+
+  res.status(200).json({
+    success: true,
+    book,
+  });
+});

@@ -8,15 +8,6 @@ import {
   resetPassword,
 } from "../controllers/authController.js";
 
-console.log({
-  register,
-  verifyOTP,
-  login,
-  logout,
-  forgotPassword,
-  resetPassword,
-});
-
 const router = express.Router();
 
 // ✅ Auth Routes

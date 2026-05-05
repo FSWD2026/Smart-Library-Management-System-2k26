@@ -2,6 +2,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import { connectDB } from "./database/db.js";
 import cloudinary from "cloudinary";
+import "./utils/cronJobs.js"; // add this line
 
 dotenv.config({ path: "./config/config.env" });
 

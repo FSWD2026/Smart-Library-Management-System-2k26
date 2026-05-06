@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
 
+const reviewSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  comment: String,
+  createdAt: { type: Date, default: Date.now },
+});
+
 const bookSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
     author: { type: String, required: true },
-    isbn: { type: String, unique: true },
+    isbn: { type: String, unique: true, sparse: true },
     category: { type: String, required: true, index: true },
     description: String,
     cover: {
@@ -17,6 +24,7 @@ const bookSchema = new mongoose.Schema(
     publishedYear: Number,
     tags: [String],
     avgRating: { type: Number, default: 0 },
+    reviews: [reviewSchema],
   },
   { timestamps: true },
 );
